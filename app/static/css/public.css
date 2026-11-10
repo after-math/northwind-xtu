@@ -1,0 +1,56 @@
+.project-site { max-width: 1400px; margin: 0 auto; padding: 0 56px; }
+.public-page:has(.project-site) { background: #f8f9fa; }
+.project-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 112px; border-bottom: 1px solid var(--line); }
+.project-brand { display: flex; align-items: center; gap: 13px; color: var(--ink); }
+.project-brand img { display: block; flex-shrink: 0; width: 48px; height: 48px; }
+.project-brand strong { display: block; font-family: "Songti SC", "STSong", "SimSun", serif; color: var(--brand-red); font-size: 23px; letter-spacing: 4px; }
+.project-brand small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+.project-hero { display: grid; grid-template-columns: minmax(280px, .83fr) minmax(0, 1.4fr); align-items: center; gap: 48px; padding: 78px 0 68px; }
+.project-eyebrow { margin-bottom: 23px; padding-left: 13px; border-left: 3px solid var(--brand-red); color: #637a8b; font-size: 12px; }
+.project-intro h1 { margin: 0 0 25px; font-family: "Songti SC", "STSong", "SimSun", serif; font-size: clamp(34px, 3.7vw, 52px); font-weight: 700; line-height: 1.5; letter-spacing: 1px; }
+.project-intro h1 span { color: var(--brand-red); }
+.project-description { margin: 0 0 30px; color: #657b8c; font-size: 14px; line-height: 1.95; }
+.project-intro > .btn { padding: 12px 21px; }
+.project-access { display: flex; align-items: center; gap: 6px; margin: 13px 0 0; color: #798b99; font-size: 11px; }
+.project-access .icon { width: 13px; height: 13px; }
+.project-preview { min-width: 0; margin: 0; padding: 10px; border: 1px solid #dce3e9; border-radius: 7px; background: #fff; box-shadow: 0 18px 45px #18354a0a; }
+.preview-label { display: flex; align-items: center; gap: 7px; padding: 3px 6px 10px; color: #6c8191; font-size: 10px; }
+.preview-label > span { width: 6px; height: 6px; border-radius: 50%; background: #9e1b24; }
+.project-preview > img { display: block; width: 100%; height: auto; border: 1px solid #e5eaee; border-radius: 2px; }
+.project-preview figcaption { padding: 10px 6px 1px; color: #8b99a5; font-size: 10px; }
+.project-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 35px; padding: 35px 0 48px; border-top: 1px solid var(--line); }
+.project-features article { display: flex; align-items: flex-start; gap: 16px; }
+.feature-number { padding-top: 2px; color: #a75d64; font-size: 12px; font-variant-numeric: tabular-nums; }
+.project-features h2 { margin-bottom: 10px; font-size: 15px; }
+.project-features p { max-width: 275px; margin: 0; color: #718493; font-size: 12px; line-height: 1.9; }
+.project-footer { display: flex; justify-content: space-between; gap: 18px; padding: 20px 0 24px; border-top: 1px solid var(--line); color: #8a98a4; font-size: 10px; }
+@media (max-width: 1000px) {
+  .project-site { padding: 0 32px; }
+  .project-hero { gap: 30px; padding: 58px 0; }
+  .project-intro h1 { font-size: 35px; }
+  .project-description { font-size: 12px; }
+  .project-features { gap: 24px; }
+}
+@media (max-width: 760px) {
+  .project-site { padding: 0 24px; }
+  .project-header { min-height: 94px; gap: 12px; }
+  .project-brand img { width: 40px; height: 40px; }
+  .project-brand strong { font-size: 20px; }
+  .project-brand small { font-size: 9px; }
+  .project-header > .btn { padding: 8px 10px; font-size: 11px; }
+  .project-header > .btn > .icon { display: none; }
+  .project-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; padding: 42px 0 36px; }
+  .project-eyebrow { margin-bottom: 19px; }
+  .project-intro h1 { margin-bottom: 18px; font-size: clamp(34px, 7vw, 44px); }
+  .project-description { font-size: 13px; }
+  .project-features { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 29px 0 35px; }
+  .project-features p { max-width: none; }
+  .project-footer { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 360px) {
+  .project-site { padding: 0 17px; }
+  .project-brand { gap: 9px; }
+  .project-brand small { max-width: 125px; }
+  .project-brand strong { letter-spacing: 2px; }
+  .project-header > .btn { font-size: 10px; }
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import icon with context %}
+{% block title %}管理员登录{% endblock %}
+{% block content %}
+<div class="login-shell">
+  <section class="login-story" aria-labelledby="system-title">
+    <div class="school-lockup">
+      <span class="login-emblem"><img src="{{ url_for('static',filename='images/xtu-emblem.png') }}" alt="湘潭大学校徽" width="76" height="76"></span>
+      <div><strong>湘潭大学</strong><span>Xiangtan University</span></div>
+    </div>
+    <div class="story-content">
+      <div class="story-caption"><span></span>数据库原理与技术课程设计</div>
+      <h1 id="system-title">商品销售及<br>订单管理系统</h1>
+      <p>让商品、客户与订单清晰关联，<br>让每一次库存变动都有据可循。</p>
+      <div class="story-workflow" aria-label="业务流程">
+        <span>{{ icon('box') }}商品档案</span>
+        <span class="workflow-join" aria-hidden="true"></span>
+        <span>{{ icon('order') }}订单处理</span>
+        <span class="workflow-join" aria-hidden="true"></span>
+        <span>{{ icon('chart') }}销售分析</span>
+      </div>
+    </div>
+    <div class="login-footnote"><span>Northwind 商业样例</span><span>商品 · 客户 · 订单 · 库存</span></div>
+  </section>
+  <section class="login-panel" aria-labelledby="login-title">
+    <div class="login-form">
+      <div class="login-mobile-brand"><img src="{{ url_for('static',filename='images/xtu-emblem.png') }}" alt="湘潭大学校徽" width="48" height="48"><span>湘潭大学<strong>商品销售与订单管理</strong></span></div>
+      <span class="login-role">管理工作台</span>
+      <h2 id="login-title">管理员登录</h2>
+      <p class="login-intro">请输入账号与密码，进入业务工作空间。</p>
+      {% if error %}<div class="alert alert-danger" role="alert">{{ error }}</div>{% endif %}
+      <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="login-field">
+          <label for="username">管理员账号</label>
+          <div class="login-input">{{ icon('users') }}<input id="username" name="username" autocomplete="username" maxlength="64" placeholder="请输入管理员账号" value="{{ request.form.get('username','') }}" required autofocus></div>
+        </div>
+        <div class="login-field">
+          <label for="password">登录密码</label>
+          <div class="login-input">{{ icon('lock') }}<input id="password" name="password" type="password" autocomplete="current-password" placeholder="请输入登录密码" required><button type="button" class="password-toggle" aria-controls="password" aria-label="显示密码" aria-pressed="false">{{ icon('eye') }}</button></div>
+        </div>
+        <button class="btn btn-primary login-submit" type="submit">登录工作台</button>
+      </form>
+      <p class="login-note">{{ icon('lock') }}请使用已创建的管理员账号登录</p>
+      <div class="login-project-note"><span>数据库原理与技术</span><a href="{{ url_for('public.home') }}">查看项目介绍</a></div>
+    </div>
+  </section>
+</div>
+{% endblock %}

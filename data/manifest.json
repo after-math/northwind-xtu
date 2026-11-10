@@ -1,0 +1,78 @@
+{
+  "source_url": "https://northwind.demodb.dev/data/northwind.mysql.sql",
+  "downloaded_on": "2026-11-10",
+  "sha256": "56b9178a14240ed71e06268652cc566caa16e7c06c46360b892a034d0a0e38a9",
+  "size_bytes": 630119,
+  "mysql_version": "8.0.46",
+  "tables": [
+    {
+      "name": "Categories",
+      "rows": 8
+    },
+    {
+      "name": "CustomerCustomerDemo",
+      "rows": 0
+    },
+    {
+      "name": "CustomerDemographics",
+      "rows": 0
+    },
+    {
+      "name": "Customers",
+      "rows": 93
+    },
+    {
+      "name": "EmployeeTerritories",
+      "rows": 49
+    },
+    {
+      "name": "Employees",
+      "rows": 9
+    },
+    {
+      "name": "Order Details",
+      "rows": 2155
+    },
+    {
+      "name": "Orders",
+      "rows": 830
+    },
+    {
+      "name": "Products",
+      "rows": 77
+    },
+    {
+      "name": "Regions",
+      "rows": 4
+    },
+    {
+      "name": "Shippers",
+      "rows": 3
+    },
+    {
+      "name": "Suppliers",
+      "rows": 29
+    },
+    {
+      "name": "Territories",
+      "rows": 53
+    },
+    {
+      "name": "_demodb_import",
+      "rows": 1
+    },
+    {
+      "name": "admin_user",
+      "rows": 1
+    },
+    {
+      "name": "app_order_meta",
+      "rows": 0
+    }
+  ],
+  "orders": {
+    "first_date": "2016-07-04",
+    "last_date": "2018-05-06"
+  },
+  "sales": "1265793.03950000"
+}

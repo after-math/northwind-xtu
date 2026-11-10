@@ -1,0 +1,8 @@
+{
+  "orders": 830,
+  "details": 2155,
+  "sales": "1265793.03950000",
+  "backup_name": "northwind-20261110-124416.sql",
+  "restored_with_database_scoped_user": true,
+  "views_reference_restored_schema": true
+}

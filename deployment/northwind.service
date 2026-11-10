@@ -1,0 +1,19 @@
+[Unit]
+Description=Northwind Flask Management
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=northwind
+Group=northwind
+WorkingDirectory=/opt/northwind-management
+EnvironmentFile=/opt/northwind-management/.env
+ExecStart=/opt/northwind-management/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 --timeout 45 --access-logfile - --error-logfile - wsgi:app
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

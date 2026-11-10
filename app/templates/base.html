@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#18354a">
+  <title>{% block title %}工作台{% endblock %} · 湘潭大学商品销售与订单管理</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/xtu-emblem.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='vendor/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+  <script src="{{ url_for('static',filename='js/app.js') }}" defer></script>
+  {% block head %}{% endblock %}
+</head>
+{% set public_layout = request.blueprint == 'public' or not session.get('user_id') %}
+<body class="{{ 'public-page' if public_layout else 'authenticated' }}">
+  {% from '_macros.html' import icon with context %}
+  <a class="skip-link" href="#main-content">跳转到主要内容</a>
+  {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-stack" aria-live="polite">
+      {% for category,message in messages %}
+      <div class="alert alert-{{ category }}" role="status">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+  {% if not public_layout %}
+  <aside class="sidebar" id="sidebar" aria-label="管理工作空间">
+    <a class="brand" href="{{ url_for('dashboard.index') }}" aria-label="湘潭大学，返回首页">
+      <span class="emblem-holder"><img src="{{ url_for('static',filename='images/xtu-emblem.png') }}" alt="湘潭大学校徽" width="54" height="54"></span>
+      <span class="brand-copy"><span class="brand-school">湘潭大学</span><strong>商品销售与订单管理</strong></span>
+    </a>
+    <nav aria-label="主导航">
+      <div class="nav-label">业务工作台</div>
+      {% set links=[('dashboard.index','首页仪表盘','grid','dashboard'),('products.index','商品管理','box','products'),('customers.index','客户管理','users','customers'),('orders.index','订单管理','order','orders'),('reports.index','销售统计','chart','reports')] %}
+      {% for endpoint,label,glyph,section in links %}
+      <a class="nav-item {{ 'active' if request.blueprint==section }}" href="{{ url_for(endpoint) }}" {% if request.blueprint==section %}aria-current="page"{% endif %}>
+        {{ icon(glyph) }}<span>{{ label }}</span>
+      </a>
+      {% endfor %}
+      <div class="nav-label">基础资料</div>
+      <a class="nav-item {{ 'active' if (request.view_args or {}).get('kind')=='categories' }}" href="{{ url_for('suppliers.index',kind='categories') }}" {% if (request.view_args or {}).get('kind')=='categories' %}aria-current="page"{% endif %}>{{ icon('layers') }}<span>商品分类</span></a>
+      <a class="nav-item {{ 'active' if (request.view_args or {}).get('kind')=='suppliers' }}" href="{{ url_for('suppliers.index',kind='suppliers') }}" {% if (request.view_args or {}).get('kind')=='suppliers' %}aria-current="page"{% endif %}>{{ icon('truck') }}<span>供应商管理</span></a>
+    </nav>
+    <div class="sidebar-footer"><strong>数据库原理与技术</strong><span>课程设计工作台</span><small>Northwind 商业样例</small></div>
+  </aside>
+  <button class="nav-scrim" type="button" aria-label="收起导航" tabindex="-1" hidden></button>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="sidebar">{{ icon('menu') }}</button>
+        <img class="mobile-emblem" src="{{ url_for('static',filename='images/xtu-emblem.png') }}" alt="湘潭大学校徽" width="27" height="27">
+        <span class="topbar-home">管理工作台</span><span class="topbar-sep" aria-hidden="true">/</span>
+        <b>{% block breadcrumb %}经营概览{% endblock %}</b>
+      </div>
+      <div class="account">
+        <span class="avatar" aria-hidden="true">{{ session.get('username','A')[0]|upper }}</span>
+        <span class="account-name">{{ session.get('username') }}<small>管理员</small></span>
+        <form action="{{ url_for('auth.logout') }}" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button class="logout" type="submit" title="退出登录">{{ icon('logout') }}<span>退出</span></button>
+        </form>
+      </div>
+    </header>
+    <main class="main-content" id="main-content" tabindex="-1">
+  {% else %}
+    <main class="public-main" id="main-content" tabindex="-1">
+  {% endif %}
+      {% block content %}{% endblock %}
+      {% if not public_layout %}
+      <footer class="page-footer"><span>湘潭大学 · 商品销售与订单管理系统</span><span>数据库原理与技术课程设计</span></footer>
+      {% endif %}
+    </main>
+  {% if not public_layout %}</div>{% endif %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>
