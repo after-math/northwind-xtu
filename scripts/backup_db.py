@@ -23,8 +23,12 @@ def main():
     command=[binary,'--host',Config.DB_HOST,'--port',str(Config.DB_PORT),'--user',Config.DB_USER,
         '--default-character-set=utf8mb4','--single-transaction','--no-tablespaces','--set-gtid-purged=OFF',
         '--column-statistics=0','--skip-add-locks','--skip-add-drop-table']
+    if Config.DB_SSL_MODE not in {'VERIFY_IDENTITY', 'VERIFY_CA'}:
+        parser.error('DB_SSL_MODE 仅支持 VERIFY_IDENTITY 或 VERIFY_CA')
+    if Config.DB_SSL_MODE == 'VERIFY_CA' and not Config.DB_SSL_CA:
+        parser.error('VERIFY_CA 必须配置可信 CA 文件')
     if Config.DB_SSL_CA:
-        command += ['--ssl-ca',Config.DB_SSL_CA,'--ssl-mode=VERIFY_IDENTITY']
+        command += ['--ssl-ca',Config.DB_SSL_CA,'--ssl-mode='+Config.DB_SSL_MODE]
     command.append(Config.DB_NAME)
     env={**os.environ,'MYSQL_PWD':Config.DB_PASSWORD}
     # Exclusive creation avoids overwriting a previous backup; permissions protect hashes/data.

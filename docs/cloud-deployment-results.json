@@ -1,0 +1,71 @@
+{
+  "url": "https://northwind-xtu-da7s.onrender.com",
+  "published_at": "2026-11-10T16:14:25+08:00",
+  "requested_use_until": "2026-11-20T16:14:25+08:00",
+  "database_trial_expires_at": "2026-12-10T13:54:14+08:00",
+  "render_plan": "free",
+  "region": "singapore",
+  "deployed_commit": "abcc1a225a7f0a6f01a57fa2664722b6c0f1f01d",
+  "database_engine": "MySQL 8.0.30-txsql",
+  "database_tls": "TLS_AES_256_GCM_SHA384 / VERIFY_CA",
+  "counts": {
+    "products": 77,
+    "customers": 93,
+    "orders": 830,
+    "order_details": 2155
+  },
+  "sales_total": "1265793.0395",
+  "local_tests_passed": 31,
+  "cloud_mysql_tests_passed": 31,
+  "browser_pages_verified": [
+    "home",
+    "login",
+    "dashboard",
+    "products",
+    "orders",
+    "order detail",
+    "reports",
+    "logout"
+  ],
+  "browser_warn_error_logs": 0,
+  "http_checks": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200,
+      "database": "mysql"
+    },
+    {
+      "path": "/login",
+      "status": 200,
+      "x_robots_tag": "noindex, nofollow"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200
+    },
+    {
+      "path": "/dashboard",
+      "status": 302
+    },
+    {
+      "path": "/orders/",
+      "status": 302
+    },
+    {
+      "path": "/login",
+      "status": 200
+    }
+  ],
+  "backup_created": true,
+  "backup_sha256": "f0e643dfb9b3fcc6affa67975c3ee75783ac1ee3b28a6e3a6c74ffd082a7e5ea",
+  "automatic_shutdown_scheduled": false,
+  "search_indexing_guaranteed": false
+}

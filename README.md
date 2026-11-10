@@ -1,6 +1,10 @@
 # Northwind 商务管理
 
-基于 Flask 与 MySQL 的商品销售及订单管理系统，用于《数据库原理与技术》课程设计。采用 Flask Blueprint、PyMySQL、Jinja2、Bootstrap 5、ECharts，保留完整 Northwind 真实历史数据。本地 MySQL 8.0 应用已验证；腾讯云免费数据库已申请，正在准备 Render 免费公开展示。云端发布状态见部署记录。
+基于 Flask 与 MySQL 的商品销售及订单管理系统，用于《数据库原理与技术》课程设计。采用 Flask Blueprint、PyMySQL、Jinja2、Bootstrap 5、ECharts，保留完整 Northwind 真实历史数据。已部署到 Render 免费网站并连接腾讯云真实 MySQL 8.0 数据库。
+
+[访问网站](https://northwind-xtu-da7s.onrender.com) · [管理员登录](https://northwind-xtu-da7s.onrender.com/login)
+
+2026-11-10 已完成上线，按 10 天展示准备。云端账号 `admin`，密码保存在本机 `instance/cloud-access.txt`（不随源码或压缩包提供）。免费实例闲置后会休眠，首次访问需要等待唤醒；可直接分享网址，搜索收录时间不保证。
 
 ## 当前工作区
 
@@ -59,7 +63,7 @@ python app.py
 
 ## 验证
 
-已在真实 MySQL 8.0.46 上通过 31 项测试，涵盖 CRUD、权限与 CSRF、库存不足、并发下单、并发取消和中途失败回滚。已验证逻辑备份恢复，已保存实际界面截图。
+已在本地 MySQL 8.0.46 与腾讯云 MySQL 8.0.30-txsql 上分别通过 31 项测试，涵盖 CRUD、权限与 CSRF、库存不足、并发下单、并发取消和中途失败回滚。已验证逻辑备份恢复，已保存本地与公网实际界面截图。云端测试使用独立临时库，正式库保留 830 笔历史订单。实际发布记录见 [部署结果](docs/cloud-deployment-results.json)。
 
 ```bash
 python -m pip install -r requirements-dev.txt
@@ -70,7 +74,7 @@ RUN_MYSQL_TESTS=1 python -m pytest -q
 
 ## 腾讯云
 
-已申请腾讯云 MySQL 8.0 免费试用实例。本次 10 天展示使用 [Render 免费部署](deployment/render.md)。长期使用可按 [腾讯云部署](deployment/cloud.md) 配置同地域、同 VPC 的 CVM + 云数据库 MySQL 8.0。仅修改 `.env` 中的地址、端口、账号及可选 CA 证书路径，业务代码共用。应用仍在本机时可通过 SSH 隧道访问云库。
+腾讯云 MySQL 8.0.30-txsql 已导入真实数据并通过加密连接。数据库试用期至 2026-12-10 13:54，本次展示参考截止 2026-11-20 16:14（未设置自动下线）。本次 10 天展示使用 [Render 免费部署](deployment/render.md)。长期使用可按 [腾讯云部署](deployment/cloud.md) 配置同地域、同 VPC 的 CVM + 云数据库 MySQL 8.0。仅修改 `.env` 中的地址、端口、账号及可选 CA 证书路径，业务代码共用。应用仍在本机时可通过 SSH 隧道访问云库。
 
 已提供 Gunicorn/systemd 与 Nginx 配置。数据库仅允许授权来源，外部入口使用 HTTPS。账号和密码留在 `.env`，不写进源码、报告或截图。原始数据导入与后续业务数据迁移步骤分别说明，避免覆盖已有记录。
 
