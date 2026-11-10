@@ -59,7 +59,7 @@ python app.py
 
 ## 验证
 
-已在真实 MySQL 8.0.46 上通过 28 项测试，涵盖 CRUD、权限与 CSRF、库存不足、并发下单、并发取消和中途失败回滚。已验证逻辑备份恢复，已保存实际界面截图。
+已在真实 MySQL 8.0.46 上通过 31 项测试，涵盖 CRUD、权限与 CSRF、库存不足、并发下单、并发取消和中途失败回滚。已验证逻辑备份恢复，已保存实际界面截图。
 
 ```bash
 python -m pip install -r requirements-dev.txt

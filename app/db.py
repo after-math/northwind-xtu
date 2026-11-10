@@ -4,6 +4,11 @@ from flask import current_app, g
 
 
 def connect(config):
+    ssl_mode = config.get('DB_SSL_MODE', 'VERIFY_IDENTITY')
+    if ssl_mode not in {'VERIFY_IDENTITY', 'VERIFY_CA'}:
+        raise ValueError('DB_SSL_MODE 仅支持 VERIFY_IDENTITY 或 VERIFY_CA。')
+    if ssl_mode == 'VERIFY_CA' and not config.get('DB_SSL_CA'):
+        raise ValueError('VERIFY_CA 必须配置可信 CA 文件。')
     options = dict(host=config['DB_HOST'], port=config['DB_PORT'],
                    user=config['DB_USER'], password=config['DB_PASSWORD'],
                    database=config['DB_NAME'], charset='utf8mb4',
@@ -11,7 +16,8 @@ def connect(config):
                    connect_timeout=5, read_timeout=20, write_timeout=20,
                    init_command="SET time_zone = '+08:00'")
     if config.get('DB_SSL_CA'):
-        options.update(ssl_ca=config['DB_SSL_CA'], ssl_verify_cert=True, ssl_verify_identity=True)
+        options.update(ssl_ca=config['DB_SSL_CA'], ssl_verify_cert=True,
+                       ssl_verify_identity=ssl_mode == 'VERIFY_IDENTITY')
     return pymysql.connect(**options)
 
 

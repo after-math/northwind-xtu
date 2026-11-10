@@ -24,7 +24,8 @@ Render 使用 `Free` 实例、新加坡地域、平台分配的 `onrender.com` �
 | DB_HOST / DB_PORT | 腾讯云实例的实际外网域名与端口 |
 | DB_NAME | northwind |
 | DB_USER / DB_PASSWORD | 仅具备本库业务权限的应用账号 |
-| DB_SSL_CA | 使用证书时填写 Render Secret File 的路径 |
+| DB_SSL_CA | certs/tencentdb-ca.pem（官方公开 CA 文件） |
+| DB_SSL_MODE | VERIFY_CA（本次腾讯云证书不包含外网域名） |
 | PUBLIC_BASE_URL | 通常不填，自动使用 RENDER_EXTERNAL_URL |
 
 应用启动不会导入、清空或重建数据库。
@@ -33,7 +34,7 @@ Render 使用 `Free` 实例、新加坡地域、平台分配的 `onrender.com` �
 
 Render 无法直接连接腾讯云 `172.16.*` 私网地址。需要启用腾讯云外网地址，在安全组中仅允许 Render 此服务 Connect → Outbound 显示的全部出口网段，以及首次导入时的管理来源。不得将 MySQL 对 `0.0.0.0/0` 开放。
 
-取得外网入口和初始化账号后，先检查 MySQL 版本与空库状态，再用 `scripts/init_db.py` 显式导入。已有业务数据时使用一致性备份恢复，避免覆盖。应用账号只授予 `northwind.*` 的 SELECT、INSERT、UPDATE、DELETE、SHOW VIEW；管理员密码独立保存，不公开在首页或仓库。启用腾讯云 SSL 后使用官方 CA 并验证主机名。
+取得外网入口和初始化账号后，先检查 MySQL 版本与空库状态，再用 `scripts/init_db.py` 显式导入。已有业务数据时使用一致性备份恢复，避免覆盖。应用账号只授予 `northwind.*` 的 SELECT、INSERT、UPDATE、DELETE、SHOW VIEW；管理员密码独立保存，不公开在首页或仓库。本次已启用腾讯云 SSL。腾讯云服务器证书不包含外网域名，按官方 SSL 说明显式使用 VERIFY_CA：要求 TLS 并验证官方 CA 证书链；不校验外网域名。默认 VERIFY_IDENTITY 模式仍用于支持域名校验的数据库，不会静默回退或关闭证书校验。
 
 ## 页面入口
 

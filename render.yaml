@@ -25,3 +25,7 @@ services:
         sync: false
       - key: DB_PASSWORD
         sync: false
+      - key: DB_SSL_CA
+        value: certs/tencentdb-ca.pem
+      - key: DB_SSL_MODE
+        value: VERIFY_CA

@@ -89,10 +89,11 @@ DB_NAME=northwind
 DB_USER=northwind_app
 DB_PASSWORD=应用账号密码
 DB_SSL_CA=/opt/northwind-management/certs/数据库CA证书.pem
+DB_SSL_MODE=VERIFY_IDENTITY
 SESSION_COOKIE_SECURE=true
 ```
 
-`DB_SSL_CA` 为可选项。数据库启用 SSL 后下载腾讯云提供的 CA 并设置该路径，PyMySQL 同时开启证书与主机名校验。只有在 HTTPS 入口已配置好时启用 `SESSION_COOKIE_SECURE=true`，否则浏览器在 HTTP 下不会发送会话 cookie。
+`DB_SSL_CA` 为可选项。数据库启用 SSL 后下载腾讯云提供的 CA 并设置该路径，默认同时校验证书与主机名。本次腾讯云外网证书不含域名，需显式设置 `DB_SSL_MODE=VERIFY_CA`，按官方方式验证 CA 证书链并加密传输；配置说明见 [证书目录](../certs/README.md)。只有在 HTTPS 入口已配置好时启用 `SESSION_COOKIE_SECURE=true`，否则浏览器在 HTTP 下不会发送会话 cookie。
 
 先在 CVM 使用维护账号导入一次；脚本根据 `.env` 的地址连接，`--user` 只覆盖账号并交互读取密码：
 

@@ -17,6 +17,7 @@ class Config:
     DB_USER = os.getenv('DB_USER', 'northwind_app')
     DB_PASSWORD = os.getenv('DB_PASSWORD', '')
     DB_SSL_CA = os.getenv('DB_SSL_CA') or None
+    DB_SSL_MODE = os.getenv('DB_SSL_MODE', 'VERIFY_IDENTITY')
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = 'Lax'
     SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'false').lower() == 'true'
