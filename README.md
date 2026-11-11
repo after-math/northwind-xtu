@@ -1,10 +1,10 @@
 # Northwind 商务管理
 
-基于 Flask 与 MySQL 的商品销售及订单管理系统，用于《数据库原理与技术》课程设计。采用 Flask Blueprint、PyMySQL、Jinja2、Bootstrap 5、ECharts，保留完整 Northwind 真实历史数据。已部署到 Render 免费网站并连接腾讯云真实 MySQL 8.0 数据库。
+基于 Flask 与 MySQL 的商品销售及订单管理系统，用于《数据库原理与技术》课程设计。采用 Flask Blueprint、PyMySQL、Jinja2、Bootstrap 5、ECharts，保留完整 Northwind 教学样例数据。已部署到 Render 免费网站并连接腾讯云真实 MySQL 8.0 数据库。
 
-[访问网站](https://northwind-xtu-da7s.onrender.com) · [管理员登录](https://northwind-xtu-da7s.onrender.com/login)
+[访问网站](https://xtu.onrender.com) · [管理员登录](https://xtu.onrender.com/login)
 
-2026-11-10 已完成上线，按 10 天展示准备。云端账号 `admin`，密码保存在本机 `instance/cloud-access.txt`（不随源码或压缩包提供）。免费实例闲置后会休眠，首次访问需要等待唤醒；可直接分享网址，搜索收录时间不保证。
+2026-11-10 首次上线，2026-11-11 启用短网址 `xtu.onrender.com`。打开网址直接进入登录页，已登录时进入仪表盘，已取消项目介绍页。云端账号 `admin`，原密码继续使用，保存在本机 `instance/cloud-access.txt`（不随源码或压缩包提供）。免费实例闲置后会休眠，首次访问需要等待唤醒；可直接分享网址，登录及后台不提供搜索索引。
 
 ## 当前工作区
 

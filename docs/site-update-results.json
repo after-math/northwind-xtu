@@ -1,0 +1,43 @@
+{
+  "url": "https://xtu.onrender.com",
+  "published_at": "2026-11-11T14:41:43+08:00",
+  "previous_url": "https://northwind-xtu-da7s.onrender.com",
+  "previous_url_retained": true,
+  "render_workspace_id": "tea-dbpccamtlv9c73f6kf5g",
+  "render_service_id": "srv-dbq0rs67bikc73bmokrg",
+  "render_deploy_id": "dep-dbq0rsm7bikc73bmolt0",
+  "deployed_commit": "0f1ec46d272535f9374e5daeda560286d03f4005",
+  "render_status_observed": "Deploy succeeded | Live",
+  "render_plan": "free",
+  "region": "singapore",
+  "auto_deploy": "off",
+  "database_reused": true,
+  "database_tls_mode": "VERIFY_CA",
+  "render_health_checks": {
+    "path": "/health",
+    "status": 200,
+    "source": "Render deploy logs"
+  },
+  "browser_verified": [
+    "root redirects to login when signed out",
+    "existing administrator credentials accepted",
+    "dashboard renders existing MySQL data",
+    "root redirects to dashboard when signed in",
+    "logout returns to login"
+  ],
+  "dashboard_observed": {
+    "products": 77,
+    "customers": 93,
+    "effective_orders": 830,
+    "sales_total": "1265793.04"
+  },
+  "local_targeted_checks": {
+    "command": "python -m pytest -q tests/test_public.py tests/test_tls.py",
+    "passed": 5
+  },
+  "screenshots": [
+    "screenshots/21-short-login.jpg",
+    "screenshots/22-short-dashboard.jpg"
+  ],
+  "automatic_shutdown_scheduled": false
+}

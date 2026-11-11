@@ -4,23 +4,25 @@
 
 ## 上线记录
 
-公网地址：[https://northwind-xtu-da7s.onrender.com](https://northwind-xtu-da7s.onrender.com)。2026-11-10 16:14（北京时间）上线，参考展示截止为 2026-11-20 16:14，未设置自动下线。实际页面已登录核对，云端 MySQL 的 31 项测试全部通过。
+当前公网地址：[https://xtu.onrender.com](https://xtu.onrender.com)。2026-11-10 16:14（北京时间）首次上线，2026-11-11 14:41 启用短网址，参考展示截止仍为 2026-11-20 16:14，未设置自动下线。
+
+短网址通过新建同工作区、新加坡地域的 Free Web Service 分配，继续使用同一个私有仓库和腾讯云数据库，自动部署关闭。服务 ID 为 `srv-dbq0rs67bikc73bmokrg`，部署 ID 为 `dep-dbq0rsm7bikc73bmolt0`。原长网址仍可访问同一数据库中的业务数据。新站点已用原管理员账号登录验证，根地址在未登录时进入登录页、已登录时进入仪表盘，检查后已退出。
 
 运行数据为 77 件商品、93 位客户、830 笔历史订单及 2,155 条明细，销售总额 1,265,793.0395。云端测试在临时库执行，测试库已清理。备份保存在本机忽略目录中。
 
-账号 `admin`，密码见本机 `instance/cloud-access.txt`，不在源码和压缩包中。发布结果见 [部署记录](../docs/cloud-deployment-results.json)。
+账号 `admin`，密码见本机 `instance/cloud-access.txt`，不在源码和压缩包中。首次发布结果见 [部署记录](../docs/cloud-deployment-results.json)，短网址更新见 [更新记录](../docs/site-update-results.json)。首次发布的云端 MySQL 31 项测试全部通过，本次首页改动的 5 项入口与 TLS 配置检查通过。
 
 ## 免费范围
 
-Render 使用 `Free` 实例、新加坡地域、平台分配的 `onrender.com` 地址和 HTTPS。一个实例连续运行 10 天最多约 240 小时，工作区每月有 750 个免费实例小时（所有免费服务共享）。不购买域名、磁盘或付费数据库，不升级计算规格。
+Render 使用 `Free` 实例、新加坡地域、平台分配的 `onrender.com` 地址和 HTTPS。一个实例连续运行 10 天最多约 240 小时，新旧两个站点合计连续运行 10 天约 480 小时；工作区每月有 750 个免费实例小时（所有免费服务共享）。不购买域名、磁盘或付费数据库，不升级计算规格。
 
-免费实例闲置 15 分钟后休眠，重新访问约需一分钟唤醒；流量与构建时间仍受工作区配额限制。Render 休眠时会对 `robots.txt` 返回禁止抓取，因此可直接分享网址，但不能保证 10 天内被搜索引擎收录。[官方免费限制](https://render.com/docs/free)
+免费实例闲置 15 分钟后休眠，重新访问约需一分钟唤醒；流量与构建时间仍受工作区配额限制。[官方免费限制](https://render.com/docs/free) 本站取消公开介绍页后，通过网址直接访问，登录及后台页面不提供搜索索引。
 
 ## 源码与发布
 
 代码放入用户自己的私有 GitHub 仓库，Render 仅获得所需仓库权限。源码不得包含 `.env`、`instance/`、`backups/`、虚拟环境、日志或数据库凭据。
 
-`render.yaml` 已声明免费 Python 服务，使用 `.python-version` 指定 Python 3.14 系列。构建命令 `pip install -r requirements.txt`；启动使用 Gunicorn 单进程、四线程。自动部署关闭，改动后手动发布。健康检查 `/health` 会实际连接 MySQL，只有数据库可连接才应视为整体发布成功。
+`render.yaml` 保留首次上线时的 Blueprint 配置。当前短网址站点在控制台独立创建，使用同样的 Python、免费规格和运行命令，后续更新应部署短网址服务 ID，不能只部署原 Blueprint 服务。`.python-version` 指定 Python 3.14 系列。构建命令 `pip install -r requirements.txt`；启动使用 Gunicorn 单进程、四线程。两个站点均关闭自动部署，改动后手动发布。健康检查 `/health` 会实际连接 MySQL，只有数据库可连接才应视为整体发布成功。
 
 环境变量：
 
