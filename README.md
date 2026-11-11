@@ -18,7 +18,7 @@ source .venv/bin/activate
 python app.py
 ```
 
-访问 [项目介绍](http://127.0.0.1:5000) 或 [管理工作台](http://127.0.0.1:5000/dashboard)。账号 `admin`，本次随机密码见 `instance/local-admin.txt`。可以用 `python scripts/init_admin.py --username admin --reset` 设置自己的密码。停止 Flask 使用终端 Ctrl+C；停止项目数据库使用 `docker compose stop`。
+访问 [管理员登录](http://127.0.0.1:5000) 或 [管理工作台](http://127.0.0.1:5000/dashboard)。打开根网址会直接进入登录页，已登录时进入仪表盘。账号 `admin`，本次随机密码见 `instance/local-admin.txt`。可以用 `python scripts/init_admin.py --username admin --reset` 设置自己的密码。停止 Flask 使用终端 Ctrl+C；停止项目数据库使用 `docker compose stop`。
 
 ## 全新环境
 

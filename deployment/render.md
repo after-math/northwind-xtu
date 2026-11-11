@@ -34,7 +34,6 @@ Render 使用 `Free` 实例、新加坡地域、平台分配的 `onrender.com` �
 | DB_USER / DB_PASSWORD | 仅具备本库业务权限的应用账号 |
 | DB_SSL_CA | certs/tencentdb-ca.pem（官方公开 CA 文件） |
 | DB_SSL_MODE | VERIFY_CA（本次腾讯云证书不包含外网域名） |
-| PUBLIC_BASE_URL | 通常不填，自动使用 RENDER_EXTERNAL_URL |
 
 应用启动不会导入、清空或重建数据库。
 
@@ -46,10 +45,10 @@ Render 无法直接连接腾讯云 `172.16.*` 私网地址。需要启用腾讯�
 
 ## 页面入口
 
-- `/`：公开的项目介绍、校徽与实际界面截图，不查询业务数据库。
+- `/`：未登录时跳转至登录页，已登录时进入仪表盘。
 - `/login`：管理员登录。
 - `/dashboard`：经营仪表盘，其余业务路由同样需要登录。
-- `/robots.txt` 与 `/sitemap.xml`：只为介绍首页提供抓取入口；登录、后台和接口均标记不索引。
+- `/robots.txt` 禁止抓取，`/sitemap.xml` 不列出页面；登录、后台和接口均标记不索引。
 - `/health`：实际数据库连通检查，不返回连接凭据。
 
 ## 上线验证

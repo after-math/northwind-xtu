@@ -10,7 +10,6 @@ load_dotenv(BASE_DIR / '.env')
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', '')
     APP_ENV = os.getenv('APP_ENV', 'development')
-    PUBLIC_BASE_URL = os.getenv('PUBLIC_BASE_URL') or os.getenv('RENDER_EXTERNAL_URL', '')
     DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
     DB_PORT = int(os.getenv('DB_PORT', '3306'))
     DB_NAME = os.getenv('DB_NAME', 'northwind')
