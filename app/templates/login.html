@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import icon with context %}
 {% block title %}管理员登录{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+{% endblock %}
 {% block content %}
-<div class="login-shell">
+<div class="login-shell liquid-login">
+  <div class="login-atmosphere" aria-hidden="true"></div>
+  <div class="login-liquid-art" aria-hidden="true">
+    <img src="{{ url_for('static',filename='images/login-liquid.svg') }}" alt="" width="720" height="760" fetchpriority="low">
+  </div>
   <section class="login-story" aria-labelledby="system-title">
     <div class="school-lockup">
       <span class="login-emblem"><img src="{{ url_for('static',filename='images/xtu-emblem.png') }}" alt="湘潭大学校徽" width="76" height="76"></span>

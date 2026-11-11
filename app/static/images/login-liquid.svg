@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="760" viewBox="0 0 720 760" fill="none">
+  <defs>
+    <linearGradient id="glass-body" x1="130" y1="100" x2="600" y2="660" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".88"/>
+      <stop offset=".18" stop-color="#a3bbd1" stop-opacity=".35"/>
+      <stop offset=".39" stop-color="#f8fcff" stop-opacity=".91"/>
+      <stop offset=".57" stop-color="#9bb8d0" stop-opacity=".32"/>
+      <stop offset=".77" stop-color="#fff" stop-opacity=".83"/>
+      <stop offset="1" stop-color="#8ba8bf" stop-opacity=".48"/>
+    </linearGradient>
+    <linearGradient id="glass-edge" x1="115" y1="450" x2="613" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7d9db6" stop-opacity=".3"/>
+      <stop offset=".26" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".52" stop-color="#bfd5e6" stop-opacity=".25"/>
+      <stop offset=".78" stop-color="#fff" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#7595af" stop-opacity=".45"/>
+    </linearGradient>
+    <radialGradient id="school-reflection" cx="0" cy="0" r="1" gradientTransform="translate(315 655) rotate(-55) scale(240 158)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a44c60" stop-opacity=".2"/>
+      <stop offset=".55" stop-color="#c8b7c3" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glass-shadow" x="0" y="0" width="720" height="760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="7" dy="23" stdDeviation="17" flood-color="#456a8a" flood-opacity=".12"/>
+    </filter>
+    <path id="glass-loop" fill-rule="evenodd" clip-rule="evenodd" d="M435 65C551 44 663 135 662 259C663 355 578 411 584 510C591 623 484 713 358 699C248 688 167 605 172 497C177 404 81 354 91 245C101 134 220 65 326 90C371 100 395 72 435 65ZM421 187C482 169 548 213 547 273C546 338 462 376 469 463C476 536 424 587 366 583C306 579 272 540 278 482C290 390 199 324 206 255C212 201 268 186 320 208C355 226 383 198 421 187Z"/>
+  </defs>
+  <g filter="url(#glass-shadow)">
+    <use href="#glass-loop" fill="url(#glass-body)" stroke="#799ab4" stroke-opacity=".16" stroke-width="1.5"/>
+    <use href="#glass-loop" fill="url(#school-reflection)"/>
+    <use href="#glass-loop" stroke="url(#glass-edge)" stroke-width="18" opacity=".62"/>
+    <use href="#glass-loop" stroke="#fff" stroke-opacity=".8" stroke-width="1.6"/>
+    <path d="M432 77C537 57 648 140 649 254C651 342 566 407 571 510C577 612 479 698 360 686" stroke="#fff" stroke-opacity=".91" stroke-width="3" stroke-linecap="round"/>
+    <path d="M325 106C225 81 115 143 106 246C99 345 193 409 186 499C179 596 253 670 351 681" stroke="#99b7cf" stroke-opacity=".3" stroke-width="4" stroke-linecap="round"/>
+    <path d="M417 176C487 154 562 207 560 275C559 345 477 388 482 461C489 543 430 601 365 597" stroke="#6d91af" stroke-opacity=".27" stroke-width="3" stroke-linecap="round"/>
+    <path d="M317 218C273 199 225 214 220 257C214 321 305 390 291 481C285 531 312 565 366 569" stroke="#fff" stroke-opacity=".95" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
